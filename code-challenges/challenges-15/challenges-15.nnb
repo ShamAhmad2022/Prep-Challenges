@@ -1,0 +1,67 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "source": [
+                "## Hacker Rank\n\nFor Thursdays you will be solving some selected challenges on HackerRank, please create an account if you don't have then\nFollow the links below:\nread them carefully and solve them then copy-paste your solution below in Code Block"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### **Required**:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#####  [Equality In An Array](https://www.hackerrank.com/challenges/equality-in-a-array/problem?isFullScreen=true)\n\nSolution:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function equalizeArray(arr) {\n    // Write your code here\n    let relationBetweenTheNumbersAndNumberOfDuplication = {};\n\n    arr.map(item => {\n        relationBetweenTheNumbersAndNumberOfDuplication[item] = (relationBetweenTheNumbersAndNumberOfDuplication[item] || 0) + 1;\n    })\n\n    let numberOfDuplication = [];\n\n    for (let item of Object.values(relationBetweenTheNumbersAndNumberOfDuplication)) {\n        numberOfDuplication.push(item);\n    }\n\n\n    var numberOfTheOtherNumbersDeleted = [];\n\n    for (var i = 0; i < numberOfDuplication.length; i++) {\n        var sum = 0;\n        for (var j = 0; j < numberOfDuplication.length; j++) {\n            if (j !== i) {\n                sum += numberOfDuplication[j];\n            }\n        }\n        numberOfTheOtherNumbersDeleted.push(sum);\n    }\n\n    const originalArrayButWithoutDuplicatedNumber = [];\n\n    for (let item of Object.keys(relationBetweenTheNumbersAndNumberOfDuplication)) {\n        originalArrayButWithoutDuplicatedNumber.push(item);\n    }\n\n    const relationObj = {};\n\n    originalArrayButWithoutDuplicatedNumber.forEach((key, i) => relationObj[key] = numberOfTheOtherNumbersDeleted[i]);\n\n    function getSmallerNumber(arr) {\n        let init = arr[0];\n        arr.map(item => {\n            if (item < init) {\n                init = item\n            }\n        })\n\n        return init\n\n    }\n\n    return getSmallerNumber(numberOfTheOtherNumbersDeleted)\n\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "### **Optional**:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#####  [Halloween Sale](https://www.hackerrank.com/challenges/halloween-sale/problem?isFullScreen=true)\n\nSolution:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function howManyGames(p, d, m, s) {\n    // Return the number of games you can buy\n    const arrayOfNumberOfGames = [];\n    let copyOfp = p;\n\n    while (copyOfp >= m) {\n        arrayOfNumberOfGames.push(copyOfp);\n        copyOfp = copyOfp - d;\n    }\n\n    let numberOfGames = arrayOfNumberOfGames.length;\n\n    function returnTheSum(arr) {\n        let sum = 0;\n        arr.map(item => sum += item)\n        return sum\n    }\n\n\n    let initPrice = returnTheSum(arrayOfNumberOfGames);//70\n\n    let copyOfInitPrice = initPrice;\n\n    const anotherArrayOfNumberOfGames = [];\n\n    while (copyOfInitPrice <= s) {\n        anotherArrayOfNumberOfGames.push(copyOfInitPrice)\n        copyOfInitPrice += m;\n    }\n\n    const toNumberOfGames = anotherArrayOfNumberOfGames.length - 1;\n\n    numberOfGames += toNumberOfGames;\n\n    let finalPrice = copyOfInitPrice - m;\n\n    return numberOfGames;\n}\n"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "markdown",
+            "source": [
+                "#####  [Sherlock And Squares](https://www.hackerrank.com/challenges/sherlock-and-squares/problem?isFullScreen=true)\n\nSolution:"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "javascript",
+            "source": [
+                "function squares(a, b) {\n    // Write your code here\n    const arrayOfNumbers = [];\n\n    for (let i = a; i <= b; i++) {\n        arrayOfNumbers.push(i)\n    }\n\n    const arrayOfSquares = [];\n\n    arrayOfNumbers.map(item => {\n        if (Number.isInteger(Math.sqrt(item))) {\n            arrayOfSquares.push(item)\n        }\n    })\n\n    if (arrayOfSquares.length >= 1) {\n        return arrayOfSquares.length;\n    }\n\n    return 0\n}"
+            ],
+            "outputs": []
+        }
+    ]
+}
